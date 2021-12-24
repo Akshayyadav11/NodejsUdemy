@@ -1,13 +1,17 @@
 const { default: chalk } = require('chalk');
 const fs = require('fs')
 
-const getNotes = function() {
+
+// const getNotes = function() {
+// arrow
+const getNotes = () => {
     console.log('This is Node js');
 }
 
 
-
-const loadNotes = function() {
+// const loadNotes =function ()  {
+// arrow
+const loadNotes = () => {
     try {
         const dataBuffer = fs.readFileSync('notes.json')
         const dataJson = dataBuffer.toString()
@@ -17,7 +21,9 @@ const loadNotes = function() {
     }
 }
 
-const saveNotes = function(notes) {
+// const saveNotes = function(notes) {
+// arrow
+const saveNotes = (notes) => {
     const dataJson = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJson)
 }
@@ -26,11 +32,16 @@ const saveNotes = function(notes) {
 
 // 12. Adding note from cmd to file
 
-const addNotes = function(title, desc) {
+// const addNotes = function(title, desc) {
+const addNotes = (title, desc) => {
     console.log('This is add note');
     const notes = loadNotes()
 
-    const duplicate = notes.filter(function(note) {
+    // const duplicate = notes.filter(function(note) {
+    //     return note.title === title
+
+    // })
+    const duplicate = notes.filter((note) => {
         return note.title === title
 
     })
@@ -48,11 +59,13 @@ const addNotes = function(title, desc) {
 
 
 // 20.
-const removeNotes = function(title) {
+// const removeNotes = function(title) {
+// arrow
+const removeNotes = (title) => {
     console.log('This is remove note');
     const notes = loadNotes()
 
-    const noteToKeep = notes.filter(function(note) {
+    const noteToKeep = notes.filter((note) => {
         return note.title !== title
 
     })
