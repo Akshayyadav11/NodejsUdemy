@@ -5,6 +5,24 @@ const getNotes = function() {
 }
 
 
+
+const loadNotes = function() {
+    try {
+        const dataBuffer = fs.readFileSync('notes.json')
+        const dataJson = dataBuffer.toString()
+        return JSON.parse(dataJson)
+    } catch (e) {
+        return []
+    }
+}
+
+const saveNotes = function(notes) {
+    const dataJson = JSON.stringify(notes)
+    fs.writeFileSync('notes.json', dataJson)
+}
+
+
+
 // 12. Adding note from cmd to file
 
 const addNotes = function(title, desc) {
@@ -27,20 +45,20 @@ const addNotes = function(title, desc) {
     }
 }
 
-const loadNotes = function() {
-    try {
-        const dataBuffer = fs.readFileSync('notes.json')
-        const dataJson = dataBuffer.toString()
-        return JSON.parse(dataJson)
-    } catch (e) {
-        return []
-    }
+
+// 20.
+const removeNotes = function(title) {
+    console.log('This is remove note');
+    const notes = loadNotes()
+
+    const noteToKeep = notes.filter(function(note) {
+        return note.title !== title
+
+    })
+    saveNotes(noteToKeep)
+    console.log('Removing new note with title and description');
+
 }
 
-const saveNotes = function(notes) {
-    const dataJson = JSON.stringify(notes)
-    fs.writeFileSync('notes.json', dataJson)
-}
 
-
-module.exports = { getNote: getNotes, addNote: addNotes }
+module.exports = { getNote: getNotes, addNote: addNotes, removeNote: removeNotes }

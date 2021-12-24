@@ -13,6 +13,7 @@ const utils = require('./utils')
 // 10 exercise
 const notes = require('./notes')
 const { green } = require('color-name')
+const { argv } = require('process')
     // const note = notes.getNotes()
     // console.log(note);
 
@@ -67,8 +68,17 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'Remove note',
-    handler: function() {
+    builder: {
+        title: {
+            describe: "note title",
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv) {
         console.log('Remoing note');
+        // 20.
+        notes.removeNote(argv.title)
     }
 })
 
