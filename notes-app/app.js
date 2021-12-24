@@ -13,7 +13,7 @@ const utils = require('./utils')
 // 10 exercise
 const notes = require('./notes')
 const { green } = require('color-name')
-const note = notes.getNotes()
+    // const note = notes.getNotes()
     // console.log(note);
 
 
@@ -54,8 +54,11 @@ yargs.command({
 
     },
     handler: function(argv) {
-        console.log('Title :', argv.title);
-        console.log('Descrption :', argv.description);
+        // console.log('Title :', argv.title);
+        // console.log('Descrption :', argv.description);
+
+        // 19 adding note
+        notes.addNote(argv.title, argv.description)
     }
 })
 
