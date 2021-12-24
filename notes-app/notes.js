@@ -11,11 +11,20 @@ const addNotes = function(title, desc) {
     console.log('This is add note');
     const notes = loadNotes()
 
-    notes.push({
-        title: title,
-        desc: desc
+    const duplicate = notes.filter(function(note) {
+        return note.title === title
+
     })
-    saveNotes(notes)
+    if (duplicate.length === 0) {
+        notes.push({
+            title: title,
+            desc: desc
+        })
+        saveNotes(notes)
+        console.log('Adding new note with title and description');
+    } else {
+        console.log('Duplicate note title found');
+    }
 }
 
 const loadNotes = function() {
