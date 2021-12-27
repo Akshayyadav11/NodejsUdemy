@@ -116,6 +116,13 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'read note',
+    builder: {
+        title: {
+            describe: "note title",
+            demandOption: true,
+            type: 'string'
+        }
+    },
     // handler: function() {
     //     console.log('Reading note');
     // }
