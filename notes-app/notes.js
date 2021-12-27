@@ -41,11 +41,15 @@ const addNotes = (title, desc) => {
     //     return note.title === title
 
     // })
-    const duplicate = notes.filter((note) => {
+    // const duplicates = notes.filter((note) => {
+    //     return note.title === title
+
+    // })
+    const duplicateNote = notes.find((note) => {
         return note.title === title
 
     })
-    if (duplicate.length === 0) {
+    if (!duplicateNote) {
         notes.push({
             title: title,
             desc: desc
