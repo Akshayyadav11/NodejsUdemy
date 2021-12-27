@@ -103,8 +103,10 @@ yargs.command({
     // handler: function() {
     //     console.log('Listing note');
     // }
-    handler() {
-        console.log('Listing note');
+    handler(argv) {
+        // 23.
+        // console.log('Listing note');
+        notes.listNote(argv)
     }
 })
 

@@ -77,4 +77,17 @@ const removeNotes = (title) => {
     }
 }
 
-module.exports = { getNote: getNotes, addNote: addNotes, removeNote: removeNotes }
+
+
+// 20.
+// const removeNotes = function(title) {
+// arrow
+const listNotes = (args) => {
+    console.log(chalk.bgGreen('This is List of notes'));
+    const notes = loadNotes()
+    notes.forEach(element => {
+        console.log(element.title)
+    });
+
+}
+module.exports = { getNote: getNotes, addNote: addNotes, removeNote: removeNotes, listNote: listNotes }
