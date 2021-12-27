@@ -94,4 +94,26 @@ const listNotes = (args) => {
     });
 
 }
-module.exports = { getNote: getNotes, addNote: addNotes, removeNote: removeNotes, listNote: listNotes }
+
+
+
+// 12. Adding note from cmd to file
+
+// const addNotes = function(title, desc) {
+const findNotes = (title) => {
+    console.log('This is find note');
+    const notes = loadNotes()
+    const foundNote = notes.find((note) => {
+        return note.title === title
+
+    })
+    console.log(foundNote);
+    if (foundNote) {
+        console.log('Note found => Title : ' + chalk.green(foundNote.title) + " Description : " + chalk.yellow(foundNote.desc));
+        // console.log(chalk.bgGreen('Adding new note with title and description'));
+    } else {
+        console.log(chalk.bgRed('note title not found'));
+    }
+}
+
+module.exports = { getNote: getNotes, addNote: addNotes, removeNote: removeNotes, listNote: listNotes, findNote: findNotes }

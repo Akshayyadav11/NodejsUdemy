@@ -119,8 +119,10 @@ yargs.command({
     // handler: function() {
     //     console.log('Reading note');
     // }
-    handler() {
-        console.log('Reading note');
+    handler(argv) {
+        // console.log('Reading note');
+        // 24.
+        notes.findNote(argv.title)
     }
 })
 
