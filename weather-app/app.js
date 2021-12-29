@@ -11,9 +11,10 @@
 
 // 31. HTTP req
 const request = require('request')
-const url = 'http://api.weatherstack.com/current?access_key=38dc4ca299daf7cd4ff3897bca457381&query=Mumbai'
+const url = 'http://api.weatherstack.com/current?access_key=38dc4ca299daf7cd4ff3897bca457381&query=Mumbai&units=f'
 request({ url: url, json: true }, (err, resp) => {
 
     // const data = JSON.parse(resp.body)  as we have used json=true
-    console.log(resp.body.current);
+    // console.log(resp.body.current);
+    console.log(`${resp.body.current.weather_descriptions[0]}. It is currently ${resp.body.current.temperature} degree out. There is ${resp.body.current.cloudcover}% chance of rain.`);
 })
