@@ -18,6 +18,8 @@ request({ url: url, json: true }, (err, resp) => {
     // console.log(resp.body.current);
     if (err) {
         console.log('Unable to connect weather service');
+    } else if (resp.body.error) {
+        console.log('Unable to find location');
     } else {
         console.log(`${resp.body.current.weather_descriptions[0]}. It is currently ${resp.body.current.temperature} degree out. There is ${resp.body.current.cloudcover}% chance of rain.`);
 
@@ -33,6 +35,8 @@ request({ url: url1, json: true }, (err, resp) => {
     // console.log(resp.body.features[0].center[0]);
     if (err) {
         console.log('Unable to connect weather service');
+    } else if (resp.body.features.length === 0) {
+        console.log('Unable to finrd location');
     } else {
         console.log(`latitude : ${resp.body.features[0].center[1]}  Longitude :  ${resp.body.features[0].center[0]}`);
     }
