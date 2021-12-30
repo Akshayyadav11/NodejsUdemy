@@ -16,5 +16,24 @@ request({ url: url, json: true }, (err, resp) => {
 
     // const data = JSON.parse(resp.body)  as we have used json=true
     // console.log(resp.body.current);
-    console.log(`${resp.body.current.weather_descriptions[0]}. It is currently ${resp.body.current.temperature} degree out. There is ${resp.body.current.cloudcover}% chance of rain.`);
+    if (err) {
+        console.log('Unable to connect weather service');
+    } else {
+        console.log(`${resp.body.current.weather_descriptions[0]}. It is currently ${resp.body.current.temperature} degree out. There is ${resp.body.current.cloudcover}% chance of rain.`);
+
+    }
 })
+
+
+// 33. HTTP req
+const url1 = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiYWtzaGF5eTk3NiIsImEiOiJjazU3cHN0aGQwZ2h2M25wN3liYjEyMm8zIn0.KosZZgpOvXxDayNtHAdIVw&limit=1'
+request({ url: url1, json: true }, (err, resp) => {
+
+    // const data = JSON.parse(resp.body)  as we have used json=true
+    // console.log(resp.body.features[0].center[0]);
+    if (err) {
+        console.log('Unable to connect weather service');
+    } else {
+        console.log(`latitude : ${resp.body.features[0].center[1]}  Longitude :  ${resp.body.features[0].center[0]}`);
+    }
+});
