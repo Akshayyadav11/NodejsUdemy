@@ -1,4 +1,5 @@
-const request = require('request')
+const request = require('request');
+const forecast = require('./utils/forecast');
 const geocodes = require('./utils/geocode')
 
 // console.log('Starting');
@@ -49,3 +50,9 @@ geocodes('Mumbai', (error, data) => {
     console.log('Error - ', error);
     console.log('Data - ', data);
 })
+
+
+// forecast(-75.7088, 44.1545, (error, data) => {
+//     console.log('Error - ', error);
+//     console.log('Data - ', data);
+// })
