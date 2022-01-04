@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const hbs = require('hbs')
 
 
 // console.log(__dirname);
@@ -7,16 +8,24 @@ const path = require('path')
 
 const app = express()
 
-const publicDirPath = path.join(__dirname, '../public')
 
-const viewPath = path.join(__dirname, '../templates')
-    // handlebars
+// define path for express config
+const publicDirPath = path.join(__dirname, '../public')
+const viewPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
+
+// handlebars
+// set up handle bar
 app.set('view engine', 'hbs')
 
+// view location
 // hbs looks for views folder(now delted) but if we want to customize it then giev any name to folder and set following
 app.set('views', viewPath)
 
-// to load static
+// register partials
+hbs.registerPartials(partialsPath)
+
+// to load static dir to serve
 app.use(express.static(publicDirPath))
 
 
@@ -79,6 +88,24 @@ app.get('/weather', (req, res) => {
     })
 })
 
+
+app.get('/help/*', (req, res) => {
+    // res.send('Help article not found')
+    res.render('404', {
+        errorMessage: 'Help article not found',
+        title: '404',
+        name: 'akshay yadav'
+    })
+})
+
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        errorMessage: '404 page not found',
+        title: '404',
+        name: 'akshay yadav'
+    })
+})
 
 app.listen(3000, () => {
     console.log('Server is up on port 3000');

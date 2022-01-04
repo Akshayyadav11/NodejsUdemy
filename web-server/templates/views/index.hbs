@@ -7,12 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/sampleJS.js"></script>
 </head>
 
 <body>
+    {{!-- loading partials --}}
+    {{>header}}
     <h1>{{title}}</h1>
-    <img src="./img/robot.png">
-    <p>Created By: {{name}}</p>
+    {{!-- <p>Created By: {{name}}</p> --}}
+     {{!-- loading partials --}}
+    {{>footer}}
 </body>
 
 </html>
