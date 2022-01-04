@@ -8,8 +8,13 @@ const path = require('path')
 const app = express()
 
 const publicDirPath = path.join(__dirname, '../public')
+
+const viewPath = path.join(__dirname, '../templates')
     // handlebars
 app.set('view engine', 'hbs')
+
+// hbs looks for views folder(now delted) but if we want to customize it then giev any name to folder and set following
+app.set('views', viewPath)
 
 // to load static
 app.use(express.static(publicDirPath))
@@ -47,6 +52,24 @@ app.get('', (req, res) => {
     //     name: 'akshay yadav'
     // })
 })
+
+app.get('/about', (req, res) => {
+
+    res.render('about', {
+        title: 'About',
+        name: 'akshay yadav'
+    })
+})
+
+
+app.get('/help', (req, res) => {
+
+    res.render('help', {
+        title: 'Help',
+        name: 'akshay yadav'
+    })
+})
+
 
 app.get('/weather', (req, res) => {
     // res.send('<html><title>Weather</title><body>This is weather page</body></html>')
