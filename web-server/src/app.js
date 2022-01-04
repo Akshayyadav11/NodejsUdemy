@@ -8,7 +8,10 @@ const path = require('path')
 const app = express()
 
 const publicDirPath = path.join(__dirname, '../public')
+    // handlebars
+app.set('view engine', 'hbs')
 
+// to load static
 app.use(express.static(publicDirPath))
 
 
@@ -30,6 +33,20 @@ app.use(express.static(publicDirPath))
 //     ])
 // })
 
+// from view engine it will render index.hbs
+app.get('', (req, res) => {
+
+    res.render('index', {
+        title: 'Weather app',
+        name: 'akshay yadav'
+    })
+
+    // without hbs
+    // res.send({
+    //     title: 'Weather app',
+    //     name: 'akshay yadav'
+    // })
+})
 
 app.get('/weather', (req, res) => {
     // res.send('<html><title>Weather</title><body>This is weather page</body></html>')
